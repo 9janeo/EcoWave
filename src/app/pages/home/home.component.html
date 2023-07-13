@@ -1,1 +1,14 @@
-<p>home works!</p>
+<mat-drawer-container
+[autosize]="true"
+class="min-h-full max-w-7xl mx-auto border-x"
+>
+  <mat-drawer mode="side" opened class="p-6">
+    <app-filters (showGenre)="onShowGenre($event)"></app-filters>
+  </mat-drawer>
+  <mat-drawer-content class="p-6">
+    <app-artists-header (columnsCountChange)="onColumnsCountChange($event)">
+    </app-artists-header>
+    Col Count: {{colsCount}} <br/>
+    Genre: {{genre}}
+  </mat-drawer-content>
+</mat-drawer-container>
