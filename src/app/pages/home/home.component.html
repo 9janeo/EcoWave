@@ -8,7 +8,32 @@ class="min-h-full max-w-7xl mx-auto border-x"
   <mat-drawer-content class="p-6">
     <app-artists-header (columnsCountChange)="onColumnsCountChange($event)">
     </app-artists-header>
-    Col Count: {{colsCount}} <br/>
-    Genre: {{genre}}
+    <mat-grid-list
+      gutterSize="16"
+      [cols]="cols"
+      [rowHeight]="rowHeight"
+    >
+      <mat-grid-tile>
+        <app-artist-box class="w-full" [fullWidthMode]="cols === 1"></app-artist-box>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <app-artist-box class="w-full" [fullWidthMode]="cols === 1"></app-artist-box>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <app-artist-box class="w-full" [fullWidthMode]="cols === 1"></app-artist-box>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <app-artist-box class="w-full" [fullWidthMode]="cols === 1"></app-artist-box>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <app-artist-box class="w-full" [fullWidthMode]="cols === 1"></app-artist-box>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <app-artist-box class="w-full" [fullWidthMode]="cols === 1"></app-artist-box>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <app-artist-box class="w-full" [fullWidthMode]="cols === 1"></app-artist-box>
+      </mat-grid-tile>
+    </mat-grid-list>
   </mat-drawer-content>
 </mat-drawer-container>
