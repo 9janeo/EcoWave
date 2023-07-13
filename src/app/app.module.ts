@@ -22,6 +22,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { ArtistsHeaderComponent } from './pages/home/components/artists-header/artists-header.component';
 import { FiltersComponent } from './pages/home/components/filters/filters.component';
 import { ArtistBoxComponent } from './pages/home/components/artist-box/artist-box.component';
+import { PlaylistsComponent } from './pages/playlists/playlists.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { ArtistBoxComponent } from './pages/home/components/artist-box/artist-bo
     HomeComponent,
     ArtistsHeaderComponent,
     FiltersComponent,
-    ArtistBoxComponent
+    ArtistBoxComponent,
+    PlaylistsComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,73 @@
+<mat-card class="max-w-7xl mx-auto" *ngIf="playlists.curations.length">
+  <table mat-table [dataSource]="dataSource"
+    class="mat-elevation-z8 w-full"
+  >
+    <ng-container matColumnDef="playlist">
+      <th mat-header-cell *matHeaderCellDef>Playlist</th>
+      <td mat-cell *matCellDef="let element">
+        <img src="{{element.playlist}}" alt="playlist cover image" class="w-[100px] my-5" />
+      </td>
+      <td mat-footer-cell *matFooterCellDef>
+        <button mat-raised-button routerLink="/home">Keep Curating</button>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Name</th>
+      <td mat-cell *matCellDef="let element">
+        <span class="truncate max-w-xs block">{{element.name}}</span>
+      </td>
+      <td mat-footer-cell *matFooterCellDef></td>
+    </ng-container>
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef>Description</th>
+      <td mat-cell *matCellDef="let element">
+        <div class="flex">
+          <span class="truncate max-w-xs block whitespace-normal">{{element.description}}</span>
+        </div>
+      </td>
+      <td mat-footer-cell *matFooterCellDef></td>
+    </ng-container>
+    <ng-container matColumnDef="itemCount">
+      <th mat-header-cell *matHeaderCellDef>Item Count</th>
+      <td mat-cell *matCellDef="let element">{{element.itemCount}}</td>
+      <td mat-footer-cell *matFooterCellDef></td>
+    </ng-container>
+    <ng-container matColumnDef="duration">
+      <th mat-header-cell *matHeaderCellDef>Duration</th>
+      <td mat-cell *matCellDef="let element">{{ (element.duration * 1000) | date: 'mm:ss'}}</td>
+      <td mat-footer-cell *matFooterCellDef></td>
+    </ng-container>
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef>
+        <button mat-raised-button color="warn">Do Something</button>
+      </th>
+      <td mat-cell *matCellDef="let element">
+        <div class="flex justify-between playlist_actions">
+          <button mat-mini-fab class="bg-green-600-important">
+            <mat-icon>playlist_play</mat-icon>
+          </button>
+          <button mat-mini-fab color="blue" class="">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-mini-fab color="warn" class="">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </td>
+      <td mat-footer-cell *matFooterCellDef>
+        <button mat-raised-button color="primary" class="float-right">Go to Favorites</button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
+  </table>
+
+</mat-card>
+<mat-card class="max-w-7xl mx-auto" *ngIf="!playlists.curations.length">
+  <p>
+    You do not have any playlists created.
+    <button mat-raised-button routerLink="/home">Start Curating</button>
+  </p>
+</mat-card>
