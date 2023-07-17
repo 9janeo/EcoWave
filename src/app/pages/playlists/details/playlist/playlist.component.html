@@ -17,6 +17,7 @@
       </div>
     </div>
   </mat-card>
+  <!-- <app-track-box><app-track-box> -->
   <table mat-table [dataSource]="dataSource"
     class="mat-elevation-z8 w-full"
   >
@@ -95,7 +96,7 @@
         </div>
       </td>
       <td mat-footer-cell *matFooterCellDef>
-        <button mat-raised-button color="primary" class="float-right">Back to Playlists</button>
+        <button mat-raised-button color="primary" class="float-right" [routerLink]="['/playlists']">Back to Playlists</button>
       </td>
     </ng-container>
 
