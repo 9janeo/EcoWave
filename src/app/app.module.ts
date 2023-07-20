@@ -26,6 +26,10 @@ import { ArtistBoxComponent } from './pages/home/components/artist-box/artist-bo
 import { PlaylistsComponent } from './pages/playlists/playlists.component';
 import { PlaylistComponent } from './pages/playlists/details/playlist/playlist.component';
 import { MediaPlayerComponent } from './components/media-player/media-player.component';
+import { CuratorService } from './services/curator.service';
+import { PlaylistService } from './services/playlist.service';
+import { TracklistComponent } from './components/track/tracklist/tracklist.component';
+import { TrackBoxComponent } from './components/track/track-box/track-box/track-box.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +41,9 @@ import { MediaPlayerComponent } from './components/media-player/media-player.com
     ArtistBoxComponent,
     PlaylistsComponent,
     PlaylistComponent,
-    MediaPlayerComponent
+    MediaPlayerComponent,
+    TracklistComponent,
+    TrackBoxComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +63,7 @@ import { MediaPlayerComponent } from './components/media-player/media-player.com
     MatSnackBarModule,
     PortalModule,
   ],
-  providers: [],
+  providers: [CuratorService, PlaylistService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,4 +1,4 @@
-<mat-card class="max-w-7xl mx-auto" *ngIf="playlist.trackList.length">
+<mat-card class="max-w-7xl mx-auto" *ngIf="activePlaylist$ | async as playlist">
   <mat-card>
     <div class="w-full p-3"
       style="background: url(https://via.placeholder.com/600) no-repeat center center; background-size: cover;">
@@ -17,8 +17,11 @@
       </div>
     </div>
   </mat-card>
-  <!-- <app-track-box><app-track-box> -->
-  <table mat-table [dataSource]="dataSource"
+  <app-track-box></app-track-box>
+  <div>
+    {{ tracks }}
+  </div>
+  <table mat-table [dataSource]="playlist.trackLists ?? []"
     class="mat-elevation-z8 w-full"
   >
     <ng-container matColumnDef="cover">
@@ -106,9 +109,9 @@
   </table>
 
 </mat-card>
-<mat-card class="max-w-7xl mx-auto" *ngIf="!playlist.trackList.length">
+<mat-card class="max-w-7xl mx-auto" *ngIf="!(activePlaylist$ | async) as playlist">
   <p>
-    You do not have any playlist created.
+    You do not have any Tracks in this playlist.
     <button mat-raised-button routerLink="/home">Start Curating</button>
   </p>
 </mat-card>

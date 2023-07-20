@@ -1,11 +1,12 @@
 import { Track } from "./track.model";
 
 export interface Playlist {
-  playlist: string;
+  id: number;
+  coverUrl: string;
   name: string;
   description: string;
-  itemCount: number;
-  duration: number;
-  id: number;
-  trackList: Array<Track>;
+  itemCount: number; // calculate using trackList
+  duration: number; // calculate from tracklist
+  trackListIds: number[];
+  trackLists?: Track[];
 }

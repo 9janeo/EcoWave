@@ -10,11 +10,15 @@ export class MediaPlayerComponent implements AfterViewInit {
 
   templatePortal!: TemplatePortal<any>;
 
+  @ViewChild('templateQueue') templateQueue!: TemplateRef<any>;
   @ViewChild('templateTrack') templateTrack!: TemplateRef<any>;
   @ViewChild('templatePlaylist') templatePlaylist!: TemplateRef<any>;
-  @ViewChild('templateQueue') templateQueue!: TemplateRef<any>;
 
   constructor(private viewContainerRef: ViewContainerRef) {  }
+  ngOnInit(): void {
+
+  }
+
   ngAfterViewInit(): void {
     // throw new Error('Method not implemented.');
     this.setTemplateQueue();
