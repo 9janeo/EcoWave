@@ -4,7 +4,7 @@ export const TRACKS: Track[] = [
   {
     id: 1,
     cover: 'https://via.placeholder.com/150',
-    track: 'placeholder',
+    trackUrl: '1.11 Gum-Gum VS Voice-Voice.mp3',
     name: 'placeholder',
     duration: 130,
     artist: 'Janelle Monae',
@@ -13,7 +13,7 @@ export const TRACKS: Track[] = [
   {
     id: 2,
     cover: 'https://via.placeholder.com/150',
-    track: 'Tightrope',
+    trackUrl: '1.12 Gum-Gum Bazooka!!.mp3',
     name: 'Tightrope (Organized Noize remix)',
     duration: 288,
     artist: 'Janelle Monae',
@@ -22,7 +22,7 @@ export const TRACKS: Track[] = [
   {
     id: 3,
     cover: 'https://via.placeholder.com/150',
-    track: 'Electric Lady',
+    trackUrl: 'Electric Lady',
     name: 'Electric Lady (featuring Solange)',
     duration: 308,
     artist: 'Janelle Monae',
@@ -31,7 +31,7 @@ export const TRACKS: Track[] = [
   {
     id: 4,
     cover: 'https://via.placeholder.com/150',
-    track: 'I Like That',
+    trackUrl: 'I Like That',
     name: 'I Like That',
     duration: 200,
     artist: 'Janelle Monae',
@@ -40,7 +40,7 @@ export const TRACKS: Track[] = [
   {
     id: 5,
     cover: 'https://via.placeholder.com/150',
-    track: 'Take 5',
+    trackUrl: 'Take 5',
     name: 'Take 5',
     duration: 200,
     artist: 'Dave Brubeck Quartet',
@@ -49,7 +49,7 @@ export const TRACKS: Track[] = [
   {
     id: 6,
     cover: 'https://via.placeholder.com/150',
-    track: 'L to the OG (feat. Kendall Roy)',
+    trackUrl: 'L to the OG (feat. Kendall Roy)',
     name: 'L to the OG (feat. Kendall Roy)',
     duration: 142,
     artist: 'Nicholas Britell',

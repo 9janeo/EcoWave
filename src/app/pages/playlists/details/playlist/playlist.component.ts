@@ -23,9 +23,9 @@ export class PlaylistComponent {
     description: 'A collection of neo-soul artist you can\'t get enough of.',
     itemCount: 1,
     duration: 126,
-    trackListIds: [1,2]
+    trackListIds: [1, 2]
   }
-  tracks?: Array<number | string | undefined > = [];
+  tracks?: Array<number | string | undefined> = [];
   dataSource: Array<Track> = [];
   displayedColumns: Array<string> = [
     'cover',
@@ -40,14 +40,14 @@ export class PlaylistComponent {
   /**
    *
    */
-  constructor(private route: ActivatedRoute, private dataService:  DataService) {
+  constructor(private route: ActivatedRoute, private dataService: DataService) {
     // get playlist id from route
     const id: number = +this.route.snapshot.params['id'];
 
     // set playlist observable by finding it from allPlaylistsWithTracks
     this.activePlaylist$ = this.dataService.allPlaylistsWithTracks$.pipe(
       // tap(allPlaylists => console.log('i get here', id, allPlaylists, allPlaylists.find(eachPlaylist => eachPlaylist.id === id))),
-      map( allPlaylists => {
+      map(allPlaylists => {
         return allPlaylists.find(eachPlaylist => eachPlaylist.id === id);
       })
     )
@@ -56,6 +56,12 @@ export class PlaylistComponent {
   ngOnInit(): void {
     // this.dataSource = this.playlist.trackListIds
     // this.tracks = this.playlist.trackListIds.map( ({id, name}) => (id + " : " + name + " \n"));
+  }
+
+  playSong(track: Track) {
+    console.log('playSong', track);
+
+    this.dataService.addAudioToQueue(track);
   }
 
 

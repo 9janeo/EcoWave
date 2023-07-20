@@ -72,7 +72,7 @@
       </th>
       <td mat-cell *matCellDef="let element">
         <div class="flex justify-between song_actions">
-          <button mat-mini-fab class="">
+          <button mat-mini-fab class=""  (click)="playSong(element)">
             <mat-icon>play_circle</mat-icon>
           </button>
           <button mat-mini-fab color="blue" class="">
