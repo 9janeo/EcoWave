@@ -1,6 +1,11 @@
 import { Component } from '@angular/core';
 import { Playlist } from 'src/app/models/playlist.model';
 import { Track } from 'src/app/models/track.model';
+import { TRACKS } from 'src/app/mock-tracks';
+import { ActivatedRoute } from '@angular/router';
+import { DataService } from 'src/app/services/data.service';
+import { Observable } from 'rxjs/internal/Observable';
+import { map, tap } from 'rxjs';
 
 @Component({
   selector: 'app-playlist',
@@ -9,43 +14,18 @@ import { Track } from 'src/app/models/track.model';
 })
 export class PlaylistComponent {
 
+  activePlaylist$: Observable<Playlist | undefined>;
+
   playlist: Playlist = {
     id: 1,
-    playlist: 'https://via.placeholder.com/150',
+    coverUrl: 'https://via.placeholder.com/150',
     name: 'Neo Soul Groove',
     description: 'A collection of neo-soul artist you can\'t get enough of.',
     itemCount: 1,
     duration: 126,
-    trackList: [
-      {
-        id: 1,
-        cover: 'https://via.placeholder.com/150',
-        track: 'placeholder',
-        name: 'placeholder',
-        duration: 130,
-        artist: 'Janelle Monae',
-        album: 'The Age of Pleasure',
-      },
-      {
-        id: 2,
-        cover: 'https://via.placeholder.com/150',
-        track: 'Tightrope',
-        name: 'Tightrope (Organized Noize remix)',
-        duration: 288,
-        artist: 'Janelle Monae',
-        album: 'The ArchAndroid',
-      },
-      {
-        id: 3,
-        cover: 'https://via.placeholder.com/150',
-        track: 'Electric Lady',
-        name: 'Electric Lady (featuring Solange)',
-        duration: 308,
-        artist: 'Janelle Monae',
-        album: 'The Electric Lady',
-      }
-    ]
+    trackListIds: [1, 2]
   }
+  tracks?: Array<number | string | undefined> = [];
   dataSource: Array<Track> = [];
   displayedColumns: Array<string> = [
     'cover',
@@ -57,8 +37,31 @@ export class PlaylistComponent {
     'action'
   ]
 
+  /**
+   *
+   */
+  constructor(private route: ActivatedRoute, private dataService: DataService) {
+    // get playlist id from route
+    const id: number = +this.route.snapshot.params['id'];
+
+    // set playlist observable by finding it from allPlaylistsWithTracks
+    this.activePlaylist$ = this.dataService.allPlaylistsWithTracks$.pipe(
+      // tap(allPlaylists => console.log('i get here', id, allPlaylists, allPlaylists.find(eachPlaylist => eachPlaylist.id === id))),
+      map(allPlaylists => {
+        return allPlaylists.find(eachPlaylist => eachPlaylist.id === id);
+      })
+    )
+  }
+
   ngOnInit(): void {
-    this.dataSource = this.playlist.trackList
+    // this.dataSource = this.playlist.trackListIds
+    // this.tracks = this.playlist.trackListIds.map( ({id, name}) => (id + " : " + name + " \n"));
+  }
+
+  playSong(track: Track) {
+    console.log('playSong', track);
+
+    this.dataService.addAudioToQueue(track);
   }
 
 

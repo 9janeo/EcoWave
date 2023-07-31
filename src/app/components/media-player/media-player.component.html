@@ -1,0 +1,26 @@
+<div class="border-y-4 text-center mt-6">
+  <!-- <ng-template [cdkPortalOutlet]="templatePortal"></ng-template> -->
+  <div *ngIf="currentAudioFile$ | async as currentAudio">
+    <audio controls autoplay>
+      <source src="../../../assets/{{currentAudio.trackUrl}}" type="audio/mpeg">
+    Your browser does not support the audio element.
+    </audio>
+  </div>
+
+  <button class="m-4" mat-raised-button (click)="playNextTrack()">Next Track</button>
+  <button class="m-4" mat-raised-button (click)="setTemplateTrack()">Template Track</button>
+  <button class="m-4" mat-raised-button (click)="setTemplatePlaylist()">Template Playlist</button>
+  <button class="m-4" mat-raised-button (click)="setTemplateQueue()">Template Queue</button>
+</div>
+
+<ng-template #templateTrack>
+  <h1>Track Template</h1>
+</ng-template>
+
+<ng-template #templatePlaylist>
+  <h1>Playlist Template</h1>
+</ng-template>
+
+<ng-template #templateQueue>
+  <h1>Queue Template</h1>
+</ng-template>

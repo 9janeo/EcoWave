@@ -13,6 +13,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTableModule } from '@angular/material/table';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import  { PortalModule } from '@angular/cdk/portal';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,6 +25,11 @@ import { FiltersComponent } from './pages/home/components/filters/filters.compon
 import { ArtistBoxComponent } from './pages/home/components/artist-box/artist-box.component';
 import { PlaylistsComponent } from './pages/playlists/playlists.component';
 import { PlaylistComponent } from './pages/playlists/details/playlist/playlist.component';
+import { MediaPlayerComponent } from './components/media-player/media-player.component';
+import { CuratorService } from './services/curator.service';
+import { PlaylistService } from './services/playlist.service';
+import { TracklistComponent } from './components/track/tracklist/tracklist.component';
+import { TrackBoxComponent } from './components/track/track-box/track-box/track-box.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +40,10 @@ import { PlaylistComponent } from './pages/playlists/details/playlist/playlist.c
     FiltersComponent,
     ArtistBoxComponent,
     PlaylistsComponent,
-    PlaylistComponent
+    PlaylistComponent,
+    MediaPlayerComponent,
+    TracklistComponent,
+    TrackBoxComponent
   ],
   imports: [
     BrowserModule,
@@ -52,8 +61,9 @@ import { PlaylistComponent } from './pages/playlists/details/playlist/playlist.c
     MatTableModule,
     MatBadgeModule,
     MatSnackBarModule,
+    PortalModule,
   ],
-  providers: [],
+  providers: [CuratorService, PlaylistService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
