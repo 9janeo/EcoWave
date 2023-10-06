@@ -1,15 +1,16 @@
+<div class="flex w-full mx-auto justify-items-center">
+  <mat-icon>home</mat-icon>
+  <a routerLink="home" class="font-bold">
+    EcoWave
+  </a>
+</div>
 <mat-toolbar class="max-w-7x1 mx-auto border-x justify-between content-between">
-
-  <div class="flex">
-    <mat-icon>home</mat-icon>
-    <a routerLink="home" class="mr-7 justify-items-center font-bold">
-      EcoWave
-    </a>
-  </div>
   <div>
     <button mat-icon-button [matMenuTriggerFor]="library">
       <mat-icon>menu</mat-icon>
     </button>
+  </div>
+  <div>
     <button mat-icon-button [matMenuTriggerFor]="notifications">
       <mat-icon
         [matBadge]="3"

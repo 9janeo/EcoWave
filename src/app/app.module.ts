@@ -13,7 +13,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTableModule } from '@angular/material/table';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import  { PortalModule } from '@angular/cdk/portal';
+import { PortalModule } from '@angular/cdk/portal';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';

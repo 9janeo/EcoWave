@@ -1,6 +1,41 @@
 /** @type {import('tailwindcss').Config} */
-
 import { fontFamily } from 'tailwindcss/defaultTheme';
+
+// function hexToRgbA(hex) {
+//   var c;
+//   if (/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)) {
+//     c = hex.substring(1).split('');
+//     if (c.length == 3) {
+//       c = [c[0], c[0], c[1], c[1], c[2], c[2]];
+//     }
+//     c = '0x' + c.join('');
+//     return 'rgba(' + [(c >> 16) & 255, (c >> 8) & 255, c & 255].join(',') + ',1)';
+//   }
+//   throw new Error('Bad Hex');
+// }
+
+// function withOpacity(variableName) {
+//   return ({ opacityValue }) => {
+//     // value = `var(variableName)`;
+//     // rgbValue = hexToRgbA(value);
+//     if (opacityValue !== undefined) {
+//       return `rgba(var(${variableName}), ${opacityValue})`
+//     }
+//     return `rgb(var(${variableName}))`
+//   }
+// }
+
+function withOpacity(variableName) {
+  return ({ opacityValue }) => {
+    // value = `var(variableName)`;
+    // rgbValue = hexToRgbA(value);
+    if (opacityValue !== undefined) {
+
+      // return `rgba(var(${variableName}), ${opacityValue})`
+    }
+    return `rgb(var(${variableName}))`
+  }
+}
 
 module.exports = {
   mode: process.env.TAILWIND_MODE ? "jit" : "",
@@ -13,54 +48,33 @@ module.exports = {
     },
     extend: {
       colors: {
-        primary: {
-          50: "var(--primary-50)",
-          100: "var(--primary-100)",
-          200: "var(--primary-200)",
-          300: "var(--primary-300)",
-          400: "var(--primary-400)",
-          500: "var(--primary-500)",
-          600: "var(--primary-600)",
-          700: "var(--primary-700)",
-          800: "var(--primary-800)",
-          900: "var(--primary-900)",
-          a100: "var(--primary-a100)",
-          a200: "var(--primary-a200)",
-          a400: "var(--primary-a400)",
-          a700: "var(--primary-a700)"
+        wave: {
+          50: withOpacity('--wave-50'),
+          100: withOpacity('--wave-100'),
+          200: withOpacity('--wave-200'),
+          300: withOpacity('--wave-300'),
+          400: withOpacity('--wave-400'),
+          500: withOpacity('--wave-500'),
+          600: withOpacity('--wave-600'),
+          700: withOpacity('--wave-700'),
+          800: withOpacity('--wave-800'),
+          900: withOpacity('--wave-900'),
+          a100: withOpacity('--wave-a100'),
+          a200: withOpacity('--wave-a200'),
+          a400: withOpacity('--wave-a400'),
+          a700: withOpacity('--wave-a700'),
         },
-        accent: {
-          50: "var(--accent-50)",
-          100: "var(--accent-100)",
-          200: "var(--accent-200)",
-          300: "var(--accent-300)",
-          400: "var(--accent-400)",
-          500: "var(--accent-500)",
-          600: "var(--accent-600)",
-          700: "var(--accent-700)",
-          800: "var(--accent-800)",
-          900: "var(--accent-900)",
-          a100: "var(--accent-a100)",
-          a200: "var(--accent-a200)",
-          a400: "var(--accent-a400)",
-          a700: "var(--accent-a700)",
-        },
-        warn: {
-          50: "var(--warn-50)",
-          100: "var(--warn-100)",
-          200: "var(--warn-200)",
-          300: "var(--warn-300)",
-          400: "var(--warn-400)",
-          500: "var(--warn-500)",
-          600: "var(--warn-600)",
-          700: "var(--warn-700)",
-          800: "var(--warn-800)",
-          900: "var(--warn-900)",
-          a100: "var(--warn-a100)",
-          a200: "var(--warn-a200)",
-          a400: "var(--warn-a400)",
-          a700: "var(--warn-a700)",
-        },
+        // primary: {
+        //   100: "var(--primary-100)",
+        //   500: "var(--primary-500)",
+        //   700: "var(--primary-700)",
+        // },
+        // accent: {
+        //   500: "var(--accent-500)",
+        // },
+        // warn: {
+        //   500: "var(--warn-500)",
+        // },
         contrast: {
           50: "var(--contrast-50)",
           100: "var(--contrast-100)",

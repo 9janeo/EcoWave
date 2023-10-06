@@ -1,13 +1,18 @@
-<button mat-flat-button color="primary">Material Button</button>
-<button class="px-4 py-2 rounded bg-blue-400">Tailwind button</button>
-<h1 class="text-blue-400 text-3xl" >Tailwind Heading One</h1>
-<app-header></app-header>
-<!-- Toolbar -->
-<div class="toolbar" role="banner">  </div>
+<div class="container mx-auto">
+  <button mat-flat-button color="primary">Material Button</button>
+  <button class="px-4 py-2 rounded bg-wave-400 text-wave-a100">Tailwind button</button>
+  <h1 color="warn" class="text-wave-500 text-3xl" >Tailwind Heading One</h1>
+  <p class="text-wave-500">Lorem Ipsum Dolor et Sencori Veritas</p>
+  <div color="primary" class="m-6 h-32 w-32 bg-wave-500 rounded-lg"></div>
 
-<div class="content" role="main">
+  <app-header></app-header>
+  <!-- Toolbar -->
+  <div class="toolbar" role="banner">  </div>
 
-</div>
+  <div class="content" role="main">
+
+  </div>
+
 
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * The content above * * * * * * * * * * * -->
@@ -16,10 +21,10 @@
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * End of Placeholder * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<router-outlet></router-outlet>
-<!-- Footer -->
-<!-- Media Player Portal -->
-<!-- <ng-template [cdkPortalOutlet]="selectedPortal"></ng-template> -->
+<main>
+  <router-outlet></router-outlet>
+</main>
 <app-media-player></app-media-player>
-<!-- End of CDK Portal -->
 <!-- <footer></footer> -->
+
+</div>
