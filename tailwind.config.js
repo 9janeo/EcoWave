@@ -1,46 +1,21 @@
 /** @type {import('tailwindcss').Config} */
 import { fontFamily } from 'tailwindcss/defaultTheme';
 
-// function hexToRgbA(hex) {
-//   var c;
-//   if (/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)) {
-//     c = hex.substring(1).split('');
-//     if (c.length == 3) {
-//       c = [c[0], c[0], c[1], c[1], c[2], c[2]];
-//     }
-//     c = '0x' + c.join('');
-//     return 'rgba(' + [(c >> 16) & 255, (c >> 8) & 255, c & 255].join(',') + ',1)';
-//   }
-//   throw new Error('Bad Hex');
-// }
-
-// function withOpacity(variableName) {
-//   return ({ opacityValue }) => {
-//     // value = `var(variableName)`;
-//     // rgbValue = hexToRgbA(value);
-//     if (opacityValue !== undefined) {
-//       return `rgba(var(${variableName}), ${opacityValue})`
-//     }
-//     return `rgb(var(${variableName}))`
-//   }
-// }
-
 function withOpacity(variableName) {
   return ({ opacityValue }) => {
-    // value = `var(variableName)`;
-    // rgbValue = hexToRgbA(value);
     if (opacityValue !== undefined) {
-
-      // return `rgba(var(${variableName}), ${opacityValue})`
+      return `rgb(var(${variableName}) / ${opacityValue})`
+      // use modern `rgb` (rgb(--color-variable) / <alpha-value>)
     }
     return `rgb(var(${variableName}))`
   }
 }
 
 module.exports = {
-  mode: process.env.TAILWIND_MODE ? "jit" : "",
+  // mode: process.env.TAILWIND_MODE ? "jit" : "",
   purge: ["./src/**/*.{ts,html,scss}"],
   // content: ["./src/**/*.{html,ts}"],
+  // darkMode: 'class',
   theme: {
     fontFamily: {
       ...fontFamily,
@@ -49,6 +24,8 @@ module.exports = {
     extend: {
       colors: {
         wave: {
+          background: withOpacity('--background'),
+          foreground: withOpacity('--foreground'),
           50: withOpacity('--wave-50'),
           100: withOpacity('--wave-100'),
           200: withOpacity('--wave-200'),

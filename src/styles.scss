@@ -8,30 +8,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-// Get tailwind files
-// @import "tailwindcss/base";
-// @import "tailwindcss/components";
-// @import "tailwindcss/utilities";
-
-// @layer {
-//   :root {
-//     --wave-50: #665c70 ;
-//     --wave-100: #66527a ;
-//     --wave-200: #664785 ;
-//     --wave-300: #663d8f ;
-//     --wave-400: #663894 ;
-//     --wave-500: #663399 ;
-//     --wave-600: #662e9e ;
-//     --wave-700: #6629a3 ;
-//     --wave-800: #661fad ;
-//     --wave-900: #6614b8 ;
-//     --wave-a100: #ffffff ;
-//     --wave-a200: #e6ccff ;
-//     --wave-a400: #b38cd9 ;
-//     --wave-a700: #8040bf ;
-//   }
-// }
-
 
 // Include the common styles for Angular Material. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
@@ -45,28 +21,64 @@
 
 $wave-app-primary: mat.define-palette(palette.$wave-pat);
 $wave-app-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
-$wave-app-accent: mat.define-palette(mat.$red-palette);
+$wave-app-warn: mat.define-palette(mat.$red-palette);
 
+// $wave-app-bright: mat.define-palette(mat.$red-palette);
+// $wave-app-bleak: mat.define-palette(mat.$red-palette);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
-$wave-app-theme: mat.define-light-theme((
+// $light-theme: mat.define-light-theme((
+//   color: (
+//     primary: $wave-app-primary,
+//     accent: $wave-app-accent,
+//     warn: $wave-app-warn,
+//     // is-dark: false,
+//     // foreground: palette.$dark-theme-foreground-palette,
+//     // background: palette.$light-theme-background-palette,
+//   )
+// ));
+
+$dark-theme: mat.define-dark-theme((
   color: (
     primary: $wave-app-primary,
     accent: $wave-app-accent,
-    // warn: $wave-app-warn
+    warn: $wave-app-warn,
+    is-dark: true,
+    // foreground: palette.$light-theme-foreground-palette,
+    background: palette.$bleak,
+    // background: palette.$dark-theme-background-palette,
   ),
   typography: mat.define-typography-config(),
   density: 0,
 ));
 
+// @include mat.core-theme($dark-theme);
+// @include mat.button-theme($dark-theme);
+
+// Apply the dark theme by default
+// @include mat.core-theme($dark-theme);
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
-@include mat.all-component-themes($wave-app-theme);
+@include mat.all-component-colors($dark-theme);
+@include mat.all-component-themes($dark-theme);
+
+// Apply the light theme only when the user prefers light themes.
+// @media (prefers-color-scheme: light) {
+//   @include mat.all-component-themes($light-theme);
+//   @include mat.button-theme($light-theme);
+// }
 
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body {
+  height: 100%;
+  // background-color: palette.$bleak;
+}
+body{
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: palette.$bleak;
+}
 

@@ -1,30 +1,24 @@
-<div class="container mx-auto">
-  <button mat-flat-button color="primary">Material Button</button>
-  <button class="px-4 py-2 rounded bg-wave-400 text-wave-a100">Tailwind button</button>
-  <h1 color="warn" class="text-wave-500 text-3xl" >Tailwind Heading One</h1>
-  <p class="text-wave-500">Lorem Ipsum Dolor et Sencori Veritas</p>
-  <div color="primary" class="m-6 h-32 w-32 bg-wave-500 rounded-lg"></div>
-
-  <app-header></app-header>
-  <!-- Toolbar -->
-  <div class="toolbar" role="banner">  </div>
-
-  <div class="content" role="main">
-
+<div class="container mx-auto bg-background mat-app-background">
+  <div id="jumbo" class="relative max-w-full overflow-hidden border-2 ">
+    <video playsinline autoplay muted loop id="bgvid" class="absolute top-0 object-cover opacity-30 z-0 w-full">
+      <source src="../assets/video/stock_vid_1080p.mp4" type="video/webm">
+      <source src="../assets/video/stock_vid_1080p.mp4" type="video/mp4">
+    </video>
+    <button mat-flat-button color="primary">Material Button</button>
+    <button class="px-4 py-2 rounded bg-wave-400 text-wave-a100  relative z-10 hover:bg-opacity-70">Tailwind button</button>
+    <h1 color="warn" class="text-wave-500 text-3xl relative z-10" >Tailwind Heading One</h1>
+    <p class="text-wave-500 relative z-10">Lorem Ipsum Dolor et Sencori Veritas</p>
+    <div color="primary" class="m-6 h-32 w-32 bg-wave-500 rounded-lg relative z-10 hover:bg-opacity-50"></div>
   </div>
 
+  <div class="toolbar" role="banner">
+    <app-header></app-header>
+  </div>
 
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content above * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * End of Placeholder * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<main>
-  <router-outlet></router-outlet>
-</main>
-<app-media-player></app-media-player>
-<!-- <footer></footer> -->
+  <div class="content" role="main">
+    <router-outlet></router-outlet>
+  </div>
+
+  <app-media-player></app-media-player>
 
 </div>

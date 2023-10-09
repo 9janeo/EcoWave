@@ -1,3 +1,14 @@
+@use 'sass:map';
+@import "../../node_modules/@angular/material/core/theming/_palette";
+
+// @use '../../node_modules/@angular/material/core/theming/palette';
+// @use '../../node_modules/@angular/material/token-theming';
+
+$bleak: rgb(9,18,39);
+$bright: rgb(234,240,255);
+$bleakhex: #091227;
+$brighthex: #eaf0ff;
+
 $wave-pat:(
   50: rgb(102,92,112), // theme("colors.wave.50"),
   100: rgb(102,82,122), // theme("colors.wave.100"),
@@ -14,21 +25,6 @@ $wave-pat:(
   A400: rgb(179,140,217), // theme("colors.wave.a400"),
   A700: rgb(128,64,191), // theme("colors.wave.a700"),
 
-  // 50: theme("colors.wave.50"),
-  // 100: theme("colors.wave.100"),
-  // 200: theme("colors.wave.200"),
-  // 300: theme("colors.wave.300"),
-  // 400: theme("colors.wave.400"),
-  // 500: theme("colors.wave.500"),
-  // 600: theme("colors.wave.600"),
-  // 700: theme("colors.wave.700"),
-  // 800: theme("colors.wave.800"),
-  // 900: theme("colors.wave.900"),
-  // A100: theme("colors.wave.a100"),
-  // A200: theme("colors.wave.a200"),
-  // A400: theme("colors.wave.a400"),
-  // A700: theme("colors.wave.a700"),
-
   contrast: (
     50: theme("colors.contrast.50"),
     100: theme("colors.contrast.100"),
@@ -47,86 +43,194 @@ $wave-pat:(
   ),
 );
 
-// $custom-tw: (
-//   50:   theme("colors.wave.50") ,
-//   100:  theme("colors.wave.100"),
-//   200:  theme("colors.wave.200"),
-//   300:  theme("colors.wave.300"),
-//   400:  theme("colors.wave.400"),
-//   500:  theme("colors.wave.500"),
-//   600:  theme("colors.wave.600"),
-//   700:  theme("colors.wave.700"),
-//   800:  theme("colors.wave.800"),
-//   900:  theme("colors.wave.900"),
-//   A100: theme("colors.wave.a100"),
-//   A200: theme("colors.wave.a200"),
-//   A400: theme("colors.wave.a400"),
-//   A700: theme("colors.wave.a700"),
+$dark-primary-text: rgba(black, 0.87);
+$dark-secondary-text: rgba(black, 0.54);
+$dark-disabled-text: rgba(black, 0.38);
+$dark-dividers: rgba(black, 0.12);
+$dark-focused: rgba(black, 0.12);
+$light-primary-text: white;
+$light-secondary-text: rgba(white, 0.7);
+$light-disabled-text: rgba(white, 0.5);
+$light-dividers: rgba(white, 0.12);
+$light-focused: rgba(white, 0.12);
+
+// Background palette for light themes.
+$light-theme-background-palette: (
+  status-bar: map.get($wave-pat, 300),
+  app-bar:    map.get($wave-pat, 100),
+  background: $bright,
+  hover:      rgba($bleak, 0.04), // TODO(kara): check style with Material Design UX
+  card:       $bright,
+  dialog:     $bright,
+  disabled-button: rgba($bleak, 0.12),
+  raised-button: $bright,
+  focused-button: $dark-focused,
+  selected-button: map.get($wave-pat, 300),
+  selected-disabled-button: map.get($wave-pat, 400),
+  disabled-button-toggle: map.get($wave-pat, 200),
+  unselected-chip: map.get($wave-pat, 300),
+  disabled-list-option: map.get($wave-pat, 200),
+  tooltip: map.get($wave-pat, 700),
+  //
+  // status-bar: map.get($wave-pat, 300),
+  // app-bar:    map.get($wave-pat, 100),
+  // background: map.get($wave-pat, 50),
+  // hover:      rgba(black, 0.04), // TODO(kara): check style with Material Design UX
+  // card:       white,
+  // dialog:     white,
+  // disabled-button: rgba(black, 0.12),
+  // raised-button: white,
+  // focused-button: $dark-focused,
+  // selected-button: map.get($wave-pat, 300),
+  // selected-disabled-button: map.get($wave-pat, 400),
+  // disabled-button-toggle: map.get($wave-pat, 200),
+  // unselected-chip: map.get($wave-pat, 300),
+  // disabled-list-option: map.get($wave-pat, 200),
+  // tooltip: map.get($wave-pat, 700),
+);
+
+// Background palette for dark themes.
+$dark-theme-background-palette: (
+  status-bar: $bleak,
+  app-bar:    map.get($wave-pat, 100),
+  background: red,
+  hover:      rgba($bright, 0.04), // TODO(kara): check style with Material Design UX
+  card:       black,
+  dialog:     black,
+  disabled-button: rgba($bright, 0.12),
+  raised-button: black,
+  focused-button: $dark-focused,
+  selected-button: map.get($wave-pat, 300),
+  selected-disabled-button: map.get($wave-pat, 400),
+  disabled-button-toggle: $bleak,
+  unselected-chip: map.get($wave-pat, 300),
+  disabled-list-option: rgba($bright, 0.12),
+  tooltip: map.get($wave-pat, 700),
+);
+
+// Foreground palette for light themes.
+$light-theme-foreground-palette: (
+  base:              $bleak,
+  disabled-button:   rgba($bleak, 0.26),
+  elevation:         $bleak,
+  icon:              rgba($bleak, 0.54),
+  icons:             rgba($bleak, 0.54),
+  text:              rgba($bleak, 0.87),
+  slider-min:        rgba($bleak, 0.87),
+  slider-off:        rgba($bleak, 0.26),
+  slider-off-active: rgba($bleak, 0.38),
+);
+
+// Foreground palette for dark themes.
+$dark-theme-foreground-palette: (
+  base:              $bright,
+  divider:           $light-dividers,
+  dividers:          $light-dividers,
+  disabled:          $light-disabled-text,
+  disabled-button:   rgba($bright, 0.3),
+  disabled-text:     $light-disabled-text,
+  elevation:         $bleak,
+  hint-text:         $light-disabled-text,
+  secondary-text:    $light-secondary-text,
+  icon:              $bright,
+  icons:             $bright,
+  text:              $bright,
+  slider-min:        $bright,
+  slider-off:        rgba($bright, 0.3),
+  slider-off-active: rgba($bright, 0.3),
+  //   base:              white,
+  //   divider:           $light-dividers,
+  //   dividers:          $light-dividers,
+  //   disabled:          $light-disabled-text,
+  //   disabled-button:   rgba(white, 0.3),
+  //   disabled-text:     $light-disabled-text,
+  //   elevation:         black,
+  //   hint-text:         $light-disabled-text,
+  //   secondary-text:    $light-secondary-text,
+  //   icon:              white,
+  //   icons:             white,
+  //   text:              white,
+  //   slider-min:        white,
+  //   slider-off:        rgba(white, 0.3),
+  //   slider-off-active: rgba(white, 0.3),
+);
+
+// ========================================= //
+// ***************************************** //
+// ========================================= //
+
+// Background palette for light themes.
+// $light-theme-background-palette: (
+//   status-bar: map.get($grey-palette, 300),
+//   app-bar:    map.get($grey-palette, 100),
+//   background: map.get($grey-palette, 50),
+//   hover:      rgba(black, 0.04), // TODO(kara): check style with Material Design UX
+//   card:       white,
+//   dialog:     white,
+//   disabled-button: rgba(black, 0.12),
+//   raised-button: white,
+//   focused-button: $dark-focused,
+//   selected-button: map.get($grey-palette, 300),
+//   selected-disabled-button: map.get($grey-palette, 400),
+//   disabled-button-toggle: map.get($grey-palette, 200),
+//   unselected-chip: map.get($grey-palette, 300),
+//   disabled-list-option: map.get($grey-palette, 200),
+//   tooltip: map.get($grey-palette, 700),
 // );
 
-$accent-pat: (
-  // 50: theme("colors.accent.50"),
-  // 100: theme("colors.accent.100"),
-  // 200: theme("colors.accent.200"),
-  // 300: theme("colors.accent.300"),
-  // 400: theme("colors.accent.400"),
-  500: theme("colors.accent.500"),
-  // 600: theme("colors.accent.600"),
-  // 700: theme("colors.accent.700"),
-  // 800: theme("colors.accent.800"),
-  // 900: theme("colors.accent.900"),
-  // A100: theme("colors.accent.a100"),
-  // A200: theme("colors.accent.a200"),
-  // A400: theme("colors.accent.a400"),
-  // A700: theme("colors.accent.a700"),
-  contrast: (
-    50: theme("colors.contrast.50"),
-    100: theme("colors.contrast.100"),
-    200: theme("colors.contrast.200"),
-    300: theme("colors.contrast.300"),
-    400: theme("colors.contrast.400"),
-    500: theme("colors.contrast.500"),
-    600: theme("colors.contrast.600"),
-    700: theme("colors.contrast.700"),
-    800: theme("colors.contrast.800"),
-    900: theme("colors.contrast.900"),
-    A100: theme("colors.contrast.a100"),
-    A200: theme("colors.contrast.a200"),
-    A400: theme("colors.contrast.a400"),
-    A700: theme("colors.contrast.a700"),
-  ),
-);
+// // Background palette for dark themes.
+// $dark-theme-background-palette: (
+//   status-bar: black,
+//   app-bar:    map.get($grey-palette, 900),
+//   background: #303030,
+//   hover:      rgba(white, 0.04), // TODO(kara): check style with Material Design UX
+//   card:       map.get($grey-palette, 800),
+//   dialog:     map.get($grey-palette, 800),
+//   disabled-button: rgba(white, 0.12),
+//   raised-button: map.get($grey-palette, 800),
+//   focused-button: $light-focused,
+//   selected-button: map.get($grey-palette, 900),
+//   selected-disabled-button: map.get($grey-palette, 800),
+//   disabled-button-toggle: black,
+//   unselected-chip: map.get($grey-palette, 700),
+//   disabled-list-option: rgba(white, 0.12),
+//   tooltip: map.get($grey-palette, 700),
+// );
 
-$warn-pat: (
-  // 50: theme("colors.warn.50"),
-  // 100: theme("colors.warn.100"),
-  // 200: theme("colors.warn.200"),
-  // 300: theme("colors.warn.300"),
-  // 400: theme("colors.warn.400"),
-  500: theme("colors.warn.500"),
-  // 600: theme("colors.warn.600"),
-  // 700: theme("colors.warn.700"),
-  // 800: theme("colors.warn.800"),
-  // 900: theme("colors.warn.900"),
-  // A100: theme("colors.warn.a100"),
-  // A200: theme("colors.warn.a200"),
-  // A400: theme("colors.warn.a400"),
-  // A700: theme("colors.warn.a700"),
-  contrast: (
-    50: theme("colors.contrast.50"),
-    100: theme("colors.contrast.100"),
-    200: theme("colors.contrast.200"),
-    300: theme("colors.contrast.300"),
-    400: theme("colors.contrast.400"),
-    500: theme("colors.contrast.500"),
-    600: theme("colors.contrast.600"),
-    700: theme("colors.contrast.700"),
-    800: theme("colors.contrast.800"),
-    900: theme("colors.contrast.900"),
-    A100: theme("colors.contrast.a100"),
-    A200: theme("colors.contrast.a200"),
-    A400: theme("colors.contrast.a400"),
-    A700: theme("colors.contrast.a700"),
-  ),
-);
+// // Foreground palette for light themes.
+// $light-theme-foreground-palette: (
+//   base:              black,
+//   divider:           $dark-dividers,
+//   dividers:          $dark-dividers,
+//   disabled:          $dark-disabled-text,
+//   disabled-button:   rgba(black, 0.26),
+//   disabled-text:     $dark-disabled-text,
+//   elevation:         black,
+//   hint-text:         $dark-disabled-text,
+//   secondary-text:    $dark-secondary-text,
+//   icon:              rgba(black, 0.54),
+//   icons:             rgba(black, 0.54),
+//   text:              rgba(black, 0.87),
+//   slider-min:        rgba(black, 0.87),
+//   slider-off:        rgba(black, 0.26),
+//   slider-off-active: rgba(black, 0.38),
+// );
 
+// // Foreground palette for dark themes.
+// $dark-theme-foreground-palette: (
+//   base:              white,
+//   divider:           $light-dividers,
+//   dividers:          $light-dividers,
+//   disabled:          $light-disabled-text,
+//   disabled-button:   rgba(white, 0.3),
+//   disabled-text:     $light-disabled-text,
+//   elevation:         black,
+//   hint-text:         $light-disabled-text,
+//   secondary-text:    $light-secondary-text,
+//   icon:              white,
+//   icons:             white,
+//   text:              white,
+//   slider-min:        white,
+//   slider-off:        rgba(white, 0.3),
+//   slider-off-active: rgba(white, 0.3),
+// );
